@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "random2"
+version = "0.1.0"
+description = "Python environment for project <Random2>"
+authors = ["Jeonghwan Cheon <jeonghwan518@kaist.ac.kr>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "^2.2.3"
+matplotlib = "^3.10.0"
+pep8 = "^1.7.1"
+torch = {version = "^2.6.0+cu118", source = "pytorch"}
+torchvision = {version = "^0.21.0+cu118", source = "pytorch"}
+torchaudio = {version = "^2.6.0+cu118", source = "pytorch"}
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

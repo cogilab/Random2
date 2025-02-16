@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# macOS dir files
+.DS_Store
+
+# large size files and results
+dataset/
+figures/
+
+# custom library
+/custom/*
+!/custom/**init**.py
+!/custom/figure/
+
+# etc.
+poetry.lock
