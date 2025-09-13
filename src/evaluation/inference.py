@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-def test(model, loader, device = None):
+def inference(model, loader, device = None):
     """
     Evaluate the model on the given data loader.
 
@@ -38,3 +38,6 @@ def test(model, loader, device = None):
     conf = np.concatenate(conf)
 
     return pred, conf
+
+
+

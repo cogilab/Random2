@@ -2,6 +2,7 @@ import torch
 import numpy as np
 from typing import Optional, Tuple
 
+
 def random_input(input_shape, batch_size, mean=0, std=1, mode="normal"):
     """Generates random input data for training or validation."""
     if mode == "normal":
@@ -15,6 +16,7 @@ def random_input(input_shape, batch_size, mean=0, std=1, mode="normal"):
 
     return inputs
 
+
 def random_label(batch_size, output_size, uniform_label=False):
     """Generates random labels for training or validation."""
     if uniform_label:
@@ -24,6 +26,27 @@ def random_label(batch_size, output_size, uniform_label=False):
 
     return labels
 
+
+def random_noise_dataset(input_size, output_size, num_sample, mean=0, std=1, mode="normal", uniform_label=False):
+    """
+    Generates a dataset of random noise inputs and corresponding labels.
+
+    Args:
+        input_size (Tuple[int, ...]): Shape of the input data excluding the batch size.
+        output_size (int): Number of output classes.
+        num_sample (int): Number of samples to generate.
+        mean (float, optional): Mean for generating normal data. Default is 0.
+        std (float, optional): Standard deviation for generating normal data. Default is 1.
+        mode (str, optional): Distribution mode ("normal" or "uniform"). Default is "normal".
+        uniform_label (bool, optional): If True, labels are uniformly distributed instead of one-hot encoding. Default is False.
+
+    Returns:
+        torchvision.datasets.TensorDataset: A dataset containing random inputs and labels.
+    """
+    inputs = random_input(input_size, num_sample, mean, std, mode)
+    labels = random_label(num_sample, output_size, uniform_label)
+
+    return torch.utils.data.TensorDataset(inputs, labels)
 
 def random_train(model: torch.nn.Module, 
                  optimizer: torch.optim.Optimizer, 
